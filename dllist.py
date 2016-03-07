@@ -75,12 +75,41 @@ class dllist(object):
 			n=node(val,None,tmp)
 			self.first=n
 			tmp.setPrv(n)
+
+	def insertVal_index(self,val,index):
+		if index < 0 or index > len(self):
+			print("Wrong index!")
+			return False
+
+		elif index == 0:
+			self.insertVal_start(val)
+
+		elif index == len(self):
+			self.insertVal_end(val)
+
+		else:
+			i=0
+			tmpnode=node(val,None,None)
+			tmp=self.first
+			while i<index:
+				tmp=tmp.getNxt()
+				i+=1
+
+			tmp.getPrv().setNxt(tmpnode)
+			tmpnode.setPrv(tmp.getPrv())
+			tmpnode.setNxt(tmp)
+			tmp.setPrv(tmpnode)
+
+
+		return True
+
+
 	
-	def length(self):
+	def __len__(self):
 		i=0
 		tmp=self.first
-		while tmp.getNxt() != None:
-			i+=1;
+		while tmp != None:
+			i+=1
 			tmp=tmp.getNxt()
 		return i
 
@@ -115,13 +144,10 @@ class dllist(object):
 
 
 l=dllist()
-m=dllist()
 
 for i in range(5):
-	l.insertVal_start(i)
-	m.insertVal_end(i)
+	l.insertVal_end(i)
 
 print(l)
-print(repr(l))
-print(m)
-print(repr(m))
+l.insertVal_index(99,4)
+print(l)

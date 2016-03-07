@@ -5,7 +5,8 @@ Just a repo for any small things I am programming on for fun
 * [x] length method
 * [x] insert value at *end* of list
 * [x] insert value at *start* of list
-* [ ] insert value at *index* of list
+* [x] insert value at *index* of list
 * [ ] delete value at *end* of list
 * [ ] delete value at *start* of list
 * [ ] delete value at *index* of list
+* [ ] move value to *index* of list
