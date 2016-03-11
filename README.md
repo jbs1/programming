@@ -1,12 +1,27 @@
 # programming
-Just a repo for any small things I am programming on for fun
+Just a repo for any small things I am programming on for fun or for class
+(320301: Fundamental CS/ Algorithms and Data Structures)
 
 ### dllist.py: a double-linked-list implementation
 * [x] length method
 * [x] insert value at *end* of list
 * [x] insert value at *start* of list
 * [x] insert value at *index* of list
-* [ ] delete value at *end* of list
-* [ ] delete value at *start* of list
-* [ ] delete value at *index* of list
+* [x] delete value at *end* of list
+* [x] delete value at *start* of list
+* [x] delete value at *index* of list
 * [ ] move value to *index* of list
+
+
+### comparison sorts
+* [ ] insertion sort
+* [ ] merge sort
+* [ ] quick sort(Random as par)
+* [ ] ...
+
+### other sorts
+* [ ] counting sort
+* [ ] radix sort
+
+
+

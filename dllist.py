@@ -45,7 +45,8 @@ class dllist(object):
 		self.first=first
 		self.last=last
 
-	def insertVal_end(self,val):
+	def ins_tl(self,val):
+		"""insert value at tail"""
 		if self.last==None and self.first==None:#empty list case
 			n=node(val,None,None)
 			self.first=n
@@ -60,7 +61,8 @@ class dllist(object):
 			self.last=n
 			tmp.setNxt(n)
 
-	def insertVal_start(self,val):
+	def ins_hd(self,val):
+		"""insert value at head"""
 		if self.last==None and self.first==None:#empty list case
 			n=node(val,None,None)
 			self.first=n
@@ -76,16 +78,17 @@ class dllist(object):
 			self.first=n
 			tmp.setPrv(n)
 
-	def insertVal_index(self,val,index):
+	def ins_i(self,val,index):
+		"""insert value at index"""
 		if index < 0 or index > len(self):
 			print("Wrong index!")
 			return False
 
 		elif index == 0:
-			self.insertVal_start(val)
+			self.ins_hd(val)
 
 		elif index == len(self):
-			self.insertVal_end(val)
+			self.ins_tl(val)
 
 		else:
 			i=0
@@ -99,11 +102,54 @@ class dllist(object):
 			tmpnode.setPrv(tmp.getPrv())
 			tmpnode.setNxt(tmp)
 			tmp.setPrv(tmpnode)
-
-
 		return True
 
+	def del_hd(self):
+		"""delete element from head"""
+		if self.__len__()==0:
+			return False
+		
+		self.first=self.first.getNxt()
+		self.first.setPrv(None)
 
+		if self.first==None:#in case the last element is delted also set last=0
+			self.last=None
+		return True;
+
+	def del_tl(self):
+		"""delete element from tail"""
+		if self.__len__()==0:
+			return False
+		
+		self.last=self.last.getPrv()
+		self.last.setNxt(None)
+
+		if self.last==None:#in case the last element is delted also set first=0
+			self.first=None
+		return True;
+
+	def del_i(self,index):
+		"""delete value at index"""
+		if index < 0 or index > len(self):
+			print("Wrong index!")
+			return False
+
+		elif index == 0:
+			self.del_hd()
+
+		elif index == len(self):
+			self.del_tl()
+
+		else:
+			i=0
+			tmp=self.first
+			while i<index:
+				tmp=tmp.getNxt()
+				i+=1
+
+			tmp.getPrv().setNxt(tmp.getNxt())
+			tmp.getNxt().setPrv(tmp.getPrv())
+		return True
 	
 	def __len__(self):
 		i=0
@@ -143,11 +189,15 @@ class dllist(object):
 		return s
 
 
-l=dllist()
+
+l=dllist();
 
 for i in range(5):
-	l.insertVal_end(i)
+	l.ins_tl(i)
 
-print(l)
-l.insertVal_index(99,4)
-print(l)
+print(repr(l))
+l.ins_i(99,2)
+print(repr(l))
+l.del_i(2)
+l.del_i(2)
+print(repr(l))
