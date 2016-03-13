@@ -17,12 +17,14 @@ Just a repo for any small things I am programming on for fun or for class
 ### comparison sorts
 * [ ] insertion sort
 * [ ] merge sort
+* [ ] heap sort
 * [ ] quick sort(Random as par)
-* [ ] ...
+* [ ] dec trees
 
 ### other sorts
 * [ ] counting sort
 * [ ] radix sort
+* [ ] bucket sort
 
 
 
