@@ -9,7 +9,13 @@ class node(object):
 		self.item = item
 		self.nxt = nxt
 
+
 	def __str__(self):
+		s=str(self.item)
+		return s
+
+
+	def __repr__(self):
 		s=""
 		s+="{"
 		if self.prv==None:
@@ -130,14 +136,14 @@ class dllist(object):
 
 	def del_i(self,index):
 		"""delete value at index"""
-		if index < 0 or index > len(self):
+		if index < 0 or index > len(self)-1:
 			print("Wrong index!")
 			return False
 
 		elif index == 0:
 			self.del_hd()
 
-		elif index == len(self):
+		elif index == len(self)-1:
 			self.del_tl()
 
 		else:
@@ -150,6 +156,89 @@ class dllist(object):
 			tmp.getPrv().setNxt(tmp.getNxt())
 			tmp.getNxt().setPrv(tmp.getPrv())
 		return True
+
+	def mv_hd(self,ori):
+		"""move origin to head"""
+		if ori < 0 or ori > len(self)-1:
+			print("Wrong index!")
+			return False
+		elif ori==0:
+			return True
+		else:
+			i=self.get_i(ori).getItem()
+			self.del_i(ori)
+			self.ins_hd(i)
+			return True
+
+	def mv_tl(self,ori):
+		"""move origin to tail"""
+		if ori < 0 or ori > len(self)-1:
+			print("Wrong index!")
+			return False
+		elif ori==len(self)-1:
+			return True
+		else:
+			i=self.get_i(ori).getItem()
+			self.del_i(ori)
+			self.ins_tl(i)
+			return True
+
+
+
+
+	def mv_i(self, ori, tar):
+		"""moves element from ori(gin) to tar(get)"""
+		if ori < 0 or ori > len(self)-1 or tar < 0 or tar > len(self):
+			print("Wrong index!")
+			return False
+
+		elif ori == tar:
+			print("Origin and target are equal!")
+			return False
+
+		else:
+			tmp=self.get_i(ori).getItem()
+			if ori<tar:
+				self.ins_i(tmp,tar)
+				self.del_i(ori)
+			else:
+				print("second")
+				self.del_i(ori)
+				self.ins_i(tmp,tar)
+			return True
+
+
+	def get_i(self, index):
+		"""return element at index"""
+		if index < 0 or index > len(self)-1:
+			print("Wrong index!")
+			return None
+		else:
+			i=0
+			tmp=self.first
+			while i<index:
+				tmp=tmp.getNxt()
+				i+=1
+			return tmp
+
+
+	def set_i(self, index, val):
+		"""sets element at index"""
+		if index < 0 or index > len(self)-1:
+			print("Wrong index!")
+			return False
+		else:
+			i=0
+			tmp=self.first
+			while i<index:
+				tmp=tmp.getNxt()
+				i+=1
+			if i==None:
+				return False
+			else:
+				tmp.setItem(val)
+				return True
+
 	
 	def __len__(self):
 		i=0
@@ -164,7 +253,7 @@ class dllist(object):
 		s="["
 		tmp=self.first
 		while True:
-			s+=str(tmp)
+			s+=repr(tmp)
 			if tmp.getNxt()==None:
 				break
 			else:
@@ -178,7 +267,7 @@ class dllist(object):
 		s="["
 		tmp=self.first
 		while True:
-			s+=str(tmp.getItem())
+			s+=str(tmp)
 			if tmp.getNxt()==None:
 				break
 			else:
@@ -187,17 +276,3 @@ class dllist(object):
 			tmp=tmp.getNxt()
 		s+="]"
 		return s
-
-
-
-l=dllist();
-
-for i in range(5):
-	l.ins_tl(i)
-
-print(repr(l))
-l.ins_i(99,2)
-print(repr(l))
-l.del_i(2)
-l.del_i(2)
-print(repr(l))

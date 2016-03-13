@@ -10,7 +10,8 @@ Just a repo for any small things I am programming on for fun or for class
 * [x] delete value at *end* of list
 * [x] delete value at *start* of list
 * [x] delete value at *index* of list
-* [ ] move value to *index* of list
+* [x] move value to *index* of list
+* [x] get value at * index*
 
 
 ### comparison sorts
