@@ -1,6 +1,4 @@
 """Jeremy Schulz"""
-import copy
-
 
 class node(object):
 	"""node for the linked list"""
@@ -28,7 +26,7 @@ class node(object):
 		else:
 			s+=str(self.nxt.getItem())
 		s+="}"
-		return s 
+		return s
 
 	def getNxt(self):
 		return self.nxt
@@ -114,7 +112,7 @@ class dllist(object):
 		"""delete element from head"""
 		if self.__len__()==0:
 			return False
-		
+
 		self.first=self.first.getNxt()
 		self.first.setPrv(None)
 
@@ -126,7 +124,7 @@ class dllist(object):
 		"""delete element from tail"""
 		if self.__len__()==0:
 			return False
-		
+
 		self.last=self.last.getPrv()
 		self.last.setNxt(None)
 
