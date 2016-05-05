@@ -15,7 +15,7 @@ Just a repo for any small things I am programming on for fun or for class
 
 
 ### comparison sorts
-* [ ] insertion sort
+* [x] insertion sort
 * [ ] merge sort
 * [ ] heap sort
 * [ ] quick sort(Random as par)
